@@ -1,0 +1,36 @@
+
+  
+ <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile>
+        <mat-card>
+           
+            <mat-card-subtitle>Last value</mat-card-subtitle>
+            <mat-card-title>{{lastDataValue}} {{selectedDataUnit}}</mat-card-title>
+    
+        </mat-card> 
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card> 
+            <mat-form-field>
+                <mat-label>Select a unit</mat-label>
+                <mat-select [(ngModel)]="selectedDataUnit" (selectionChange)="onUnitChange()">
+                    <mat-option *ngFor="let data of dataUnits" [value]="data">
+                        {{data}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+
+           
+        </mat-card>
+       
+    </mat-grid-tile>
+  
+    </mat-grid-list>
+          
+
+      <div echarts [options]="chartOptions" [merge]="updateOptions" [loading]="loadingChart" class="demo-chart"></div>
+      
+
+
+
