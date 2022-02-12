@@ -24,9 +24,10 @@
         <mat-card> 
             <mat-form-field>
                 <mat-label>Select a unit</mat-label>
+               
                 <mat-select [(ngModel)]="selectedDataUnit" (selectionChange)="onUnitChange()">
-                    <mat-option *ngFor="let data of dataUnits" [value]="data">
-                        {{data}}
+                    <mat-option *ngFor="let data of dataUnits | keyvalue" [value]="data.key">
+                        {{data.value}}
                     </mat-option>
                 </mat-select>
               </mat-form-field>

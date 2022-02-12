@@ -8,7 +8,7 @@ import { DataPointToPlot } from 'src/app/interfaces/data-point-to-plot'
 })
 export abstract class ProcessDataService {
 
-  abstract listUnits: string[];
+  abstract listUnits: {[key: string]:string};
   //abstract rawUnitsToFinal: {[key: string]: string};
 
   //abstract unitsForPlot: {[key: string]: string};

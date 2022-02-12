@@ -8,7 +8,8 @@ import { ProcessDataService } from './process-data.service'
 })
 export class ProcessTemperatureDataService extends ProcessDataService{
 
-  listUnits = ["ºC","dK"];
+  listUnits = {"ºC": "ºC","dK":"dK"};
+  selectedDataUnit ="ºC";
   //rawUnitsToFinal = { "ºC": }
   conversionTable = {
       "dK-ºC": (value: number) => {

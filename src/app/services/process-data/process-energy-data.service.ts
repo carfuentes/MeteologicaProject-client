@@ -8,7 +8,8 @@ import { ProcessDataService } from './process-data.service'
 })
 export class ProcessEnergyDataService extends ProcessDataService {
 
-  listUnits = ["kW","MW"];
+  listUnits = {"kW":"kWh","MW":"MWh"};
+  selectedDataUnit ="kW";
   conversionTable = {
       "MW-MW": (value: number) => {
         return value;

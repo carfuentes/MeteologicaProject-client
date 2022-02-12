@@ -29,7 +29,7 @@ export class DataChartComponent implements OnInit {
   @Input() processDataService: ProcessEnergyDataService | ProcessTemperatureDataService;
   
   selectedDataUnit: string;
-  dataUnits: string[];
+  dataUnits: {[key: string]:string};
 
   lastDataPoint: DataPoint | null = null;
   lastDataPointToPlot: DataPointToPlot | null = null;
@@ -53,7 +53,7 @@ export class DataChartComponent implements OnInit {
   ngOnInit(): void {
     
     this.dataUnits=this.processDataService.listUnits
-    this.selectedDataUnit=this.dataUnits[0];
+    this.selectedDataUnit=this.processDataService.selectedDataUnit;
     this.chartOptions= this.chartService.setChartOptions(this.startDate,
                                             this.endDate,
                                             this.selectedDataUnit);
