@@ -23,7 +23,7 @@
     <mat-grid-tile>
         <mat-card> 
             <mat-form-field>
-                <mat-label>Select a unit</mat-label>
+                <mat-label class="prueba">Select a unit</mat-label>
                
                 <mat-select [(ngModel)]="selectedDataUnit" (selectionChange)="onUnitChange()">
                     <mat-option *ngFor="let data of dataUnits | keyvalue" [value]="data.key">
@@ -40,9 +40,9 @@
   
     </mat-grid-list>
           
-
-      <div echarts [options]="chartOptions" [merge]="updateOptions" [loading]="loadingChart" class="demo-chart"></div>
+    <div class="data-chart">
+      <div  [id]="eventName" echarts [options]="chartOptions" [merge]="updateOptions" [loading]="loadingChart"></div>
       
-
+    </div>
 
 

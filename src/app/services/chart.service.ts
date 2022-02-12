@@ -28,20 +28,38 @@ export class ChartService {
         
         min: startDate,
         max: endDate,
-        
+        name: "Time",
+        nameTextStyle: {
+          fontFamily: "Montserrat",
+          fontSize: "1.5em",
+          fontWeight: "bold",
+          // color: "blue"
+        },
         axisLabel: {
           formatter: (function(value: any){
               return moment(value).format('HH:mm:ss');
-          })
-      }
+          }),
+          fontFamily: "Montserrat"
+      },
+     
+      minInterval: 3600 / 5
+    
       },
       yAxis: {
         type: 'value',
         boundaryGap: [0, '100%'],
-        
+        name: "Energy",
+        nameTextStyle: {
+          fontFamily: "Montserrat",
+          fontSize: "1.5em",
+          fontWeight: "bold",
+          // color: "blue"
+        },
+        min: 0,
         scale: true,
         axisLabel: {
-          formatter: '{value} '+ unit
+          formatter: '{value} '+ unit,
+          fontFamily: "Montserrat"
         }
       },
       series: [
