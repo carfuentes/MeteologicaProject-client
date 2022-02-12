@@ -8,12 +8,12 @@ import { TestModuleMetadata } from '@angular/core/testing';
 
 import { SocketService } from '../services/socket.service';
 import { ChartService } from '../services/chart.service';
-import { TimeUtilsService } from '../services/time-utils.service';
 
 
-import { UnitsPowerService } from '../services/units/units-power.service';
-import { UnitsTemperatureService } from '../services/units/units-temperature.service';
-import { last } from 'rxjs';
+import { ProcessEnergyDataService } from '../services/process-data/process-energy-data.service';
+import { ProcessTemperatureDataService } from '../services/process-data/process-temperature-data.service';
+import { Data } from '@angular/router';
+import { DataPointToPlot } from '../interfaces/data-point-to-plot';
 
 
 @Component({
@@ -26,17 +26,16 @@ export class DataChartComponent implements OnInit {
 
 
   @Input() eventName: string;
-  @Input() unitsService: UnitsTemperatureService | UnitsPowerService;
+  @Input() processDataService: ProcessEnergyDataService | ProcessTemperatureDataService;
   
   selectedDataUnit: string;
   dataUnits: string[];
 
   lastDataPoint: DataPoint | null = null;
-  lastDataValue: number;
-
-  listDataValues: [Date,number][] = [];
-  listDataPoints: DataPoint[] =[];
-
+  lastDataPointToPlot: DataPointToPlot | null = null;
+  
+  listToPlot: [Date,number][] = [];
+  
   chartOptions: EChartsOption;
 
   updateOptions: EChartsOption = {};
@@ -46,19 +45,20 @@ export class DataChartComponent implements OnInit {
   endDate: Date = moment(this.startDate).add(1, 'm').toDate();
 
   constructor(private socketService: SocketService, 
-              private chartService: ChartService,
-              private timeUtilsService: TimeUtilsService) { 
+              private chartService: ChartService) { 
               
           
   }
 
   ngOnInit(): void {
     
-    this.dataUnits=this.unitsService.listUnits
+    this.dataUnits=this.processDataService.listUnits
     this.selectedDataUnit=this.dataUnits[0];
     this.chartOptions= this.chartService.setChartOptions(this.startDate,
                                             this.endDate,
                                             this.selectedDataUnit);
+
+    
 
     this.streamData();
   }
@@ -69,18 +69,18 @@ export class DataChartComponent implements OnInit {
    
    
 
-    this.listDataPoints.map((dataPoint: DataPoint, index): any => {
-        let convertVal=this.unitsService.convertDataValue(dataPoint,this.selectedDataUnit)
-        this.listDataValues[index][1]=convertVal;
-    });
+    // this.listDataPoints.map((dataPoint: DataPoint, index): any => {
+    //     let convertVal=this.unitsService.convertDataValue(dataPoint,this.selectedDataUnit)
+    //     this.listDataValues[index][1]=convertVal;
+    // });
 
-    if (this.lastDataPoint) {
-      this.lastDataValue=this.unitsService.convertDataValue(this.lastDataPoint,this.selectedDataUnit)
-    }
+    // if (this.lastDataPoint) {
+    //   this.lastDataValue=this.unitsService.convertDataValue(this.lastDataPoint,this.selectedDataUnit)
+    // }
 
-    this.updateOptions = this.chartService.updateChartOptions(this.endDate,
-      this.selectedDataUnit,
-      this.listDataValues)
+    // this.updateOptions = this.chartService.updateChartOptions(this.endDate,
+    //   this.selectedDataUnit,
+    //   this.listDataValues)
   
     
   }
@@ -89,32 +89,27 @@ export class DataChartComponent implements OnInit {
   streamData(): void {
     this.socketService.getUpdates(this.eventName).subscribe((latestData: DataPoint) => 
       {
-       
-        this.listDataPoints.push(latestData);
+        //this.listDataPoints.push(latestData);
         
-        let dataPointVal=this.unitsService.convertDataValue(latestData,this.selectedDataUnit)
-        let dataPointDate= this.timeUtilsService.getCurrentDate(latestData.time,this.startDate)
+        let DataPointToPlot=this.processDataService.processDataPoint(latestData,this.startDate,this.selectedDataUnit);
 
-        this.lastDataPoint= latestData;
-        this.lastDataValue= dataPointVal;
+        this.lastDataPoint= this.processDataService.dataPointConverted;
+        this.lastDataPointToPlot=DataPointToPlot;
 
-        let data_val: [Date,number] =  [
-              dataPointDate,
-              dataPointVal
+        this.listToPlot.push([
+          DataPointToPlot.time,
+          DataPointToPlot.value
+        ])
 
-          ]
-        
-        this.listDataValues.push(data_val)
-       
        
      
-        if (this.endDate < dataPointDate) {
-          this.endDate= dataPointDate;
+        if (this.endDate < DataPointToPlot.time) {
+          this.endDate= DataPointToPlot.time;
         }
 
         this.updateOptions = this.chartService.updateChartOptions(this.endDate,
                                                                   this.selectedDataUnit,
-                                                                  this.listDataValues)
+                                                                  this.listToPlot)
       
       })
   }

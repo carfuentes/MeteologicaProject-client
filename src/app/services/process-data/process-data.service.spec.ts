@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UnitsParentService } from './units-parent.service';
+import { ProcessDataService } from './process-data.service';
 
-describe('UnitsParentService', () => {
-  let service: UnitsParentService;
+describe('ProcessDataService', () => {
+  let service: ProcessDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UnitsParentService);
+    service = TestBed.inject(ProcessDataService);
   });
 
   it('should be created', () => {

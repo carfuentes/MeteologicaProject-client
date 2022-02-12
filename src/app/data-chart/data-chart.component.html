@@ -4,11 +4,22 @@
     <mat-grid-tile>
         <mat-card>
            
-            <mat-card-subtitle>Last value</mat-card-subtitle>
-            <mat-card-title>{{lastDataValue}} {{selectedDataUnit}}</mat-card-title>
+            <mat-card-subtitle>Last value received</mat-card-subtitle>
+            <mat-card-title>{{lastDataPoint?.value}} {{lastDataPoint?.unit}}</mat-card-title>
     
         </mat-card> 
+       
     </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card>
+           
+            <mat-card-subtitle>Last value plotted</mat-card-subtitle>
+            <mat-card-title>{{lastDataPointToPlot?.value}} {{lastDataPointToPlot?.unit}}</mat-card-title>
+    
+        </mat-card> 
+       
+    </mat-grid-tile>
+ 
     <mat-grid-tile>
         <mat-card> 
             <mat-form-field>
