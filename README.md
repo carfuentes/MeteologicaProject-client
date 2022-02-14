@@ -7,7 +7,7 @@ In this project, temperature and power data obtained through a web socket is bei
 
 To run the application locally:
 
-- Install Node (>= v16.13.1) and npm (>=8.1.2)
+- Install [Node.js](https://nodejs.org/en/download/)( >= v16.13.1) and [npm](https://www.npmjs.com/) (>=8.1.2)
 - Move to the project root folder path
 - Run `npm install` to install all the dependencies
 - Make sure the back-end server ([MeteologicaProject-server application][back-end repo]) is serving in localhost:3000/
@@ -38,11 +38,11 @@ If you want to change the application port, you can run the command `ng serve --
 
 ## What's in here
 
-This project is based in Angular version 13.3.2 and follows its basic structure.
+This project is based in [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2 and follows its basic structure.
 
 ### Workspace
 
-This referes to the top level of the project and you can read [here](https://angular.io/guide/file-structure#workspace-configuration-files) all the documentation about the files and folders here.
+This referes to the top level of the project and you can read [here](https://angular.io/guide/file-structure#workspace-configuration-files) all the documentation about the files and folders in the root project folder.
 
 ### Application source files
 
