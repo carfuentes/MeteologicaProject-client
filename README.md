@@ -34,22 +34,7 @@ export const environment = {
 };
 ```
 
-If you want to change the application port, you can add the flag `--port $PORT_NUMBER` to any npm command where $PORT_NUMBER is an integer representing the port number in your local computer where the application is going to be served.
-
-## Angular by default npm commands
-
-These are the most useful commands defined in package.json:
-
-- `npm start` - runs the TypeScript compiler, asset copier, and a server at the same time, all three in "watch mode".
-- `npm run build` - runs the TypeScript compiler and asset copier once.
-- `npm run build:watch` - runs the TypeScript compiler and asset copier in "watch mode"; when changes occur to source files, they will be recompiled or copied into dist/.
-- `npm run lint` - runs tslint on the project files.
-- `npm run serve` - runs lite-server.
-
-These are the test-related scripts:
-
-- `npm test` - builds the application and runs Intern tests (both unit and functional) one time.
-- `npm run ci` - cleans, lints, and builds the application and runs Intern tests (both unit and functional) one time.
+If you want to change the application port, you can run the command `ng serve --port $PORT_NUMBER` where $PORT_NUMBER is an integer representing the port number in your local computer where the application is going to be served.
 
 ## What's in here
 
@@ -65,7 +50,13 @@ This refers to the `/src` files and you can read [here](https://angular.io/guide
 
 ### Components
 
-This project has three main components: - `src/app/app.component.ts`- The main app component, that has only the logic to diplay the chart tabs and the other components selectors. - `src/app/components/energy-data/energy-data.component.ts`- This is the component that has al the logic to obtain the energy data from the power data records received from the socket in real-time and display it into a chart. It inhertis from an abstract class `src/app/components/data-parent/data-parent.component.ts` thas has all the common functionality that share the components that need to display and process data. - `src/app/components/temperature-data/temperature-data.component.ts`- This is the component that has al the logic to obtain the average temperature data from the temperature data records received from the socket real-time and display it into a chart. It inhertis from an abstract class `src/app/components/data-parent/data-parent.component.ts` thas has all the common functionality that share the components that need to display and process data.
+This project has three main components:
+
+- `src/app/app.component.ts`- The main app component, that has only the logic to diplay the chart tabs and the other components selectors.
+
+- `src/app/components/energy-data/energy-data.component.ts`- This is the component that has al the logic to obtain the energy data from the power data records received from the socket in real-time and display it into a chart. It inhertis from an abstract class `src/app/components/data-parent/data-parent.component.ts` thas has all the common functionality that share the components that need to display and process data.
+
+- `src/app/components/temperature-data/temperature-data.component.ts`- This is the component that has al the logic to obtain the average temperature data from the temperature data records received from the socket real-time and display it into a chart. It inhertis from an abstract class `src/app/components/data-parent/data-parent.component.ts` thas has all the common functionality that share the components that need to display and process data.
 
 ### Services
 
