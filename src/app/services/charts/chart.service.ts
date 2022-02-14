@@ -23,6 +23,10 @@ export abstract class ChartService {
    * 
    * @returns Object with the Echarts chart init options
     */
+
+  getUnitToPlot (unit: string): string {
+    return this.changeDataUnit[unit];
+  }
   setChartOptions(startDate: Date, endDate: Date, unit:string) : EChartsOption {
     
     return {
@@ -72,7 +76,7 @@ export abstract class ChartService {
         boundaryGap: [0, '100%'],
         scale: true,
         axisLabel: {
-          formatter: '{value} '+ this.changeDataUnit[unit],
+          formatter: '{value} '+ this.getUnitToPlot(unit),
           fontFamily: "Montserrat"
         }
       },
@@ -106,7 +110,7 @@ export abstract class ChartService {
             return value.max + 0.5;
         },
         axisLabel: {
-          formatter: '{value} '+ this.changeDataUnit[unit]
+          formatter: '{value} '+ this.getUnitToPlot(unit)
         }
       },
       series: [

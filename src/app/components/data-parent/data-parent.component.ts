@@ -87,7 +87,8 @@ export abstract class DataParentComponent implements OnInit {
           // When the last element is processed, used it to update the variable with the last data point object plotted 
           if (index == this.listDataPointsToPlot?.length - 1) {
             if (this.lastDataPointToPlot) {
-              this.lastDataPointToPlot= {... dataPointConverted, time: this.lastDataPointToPlot.time}
+              
+              this.lastDataPointToPlot= {value:dataPointConverted.value, unit: this.chartService.getUnitToPlot(dataPointConverted.unit), time: this.lastDataPointToPlot.time}
               this.processDataService.lastDataPointToPlot=this.lastDataPointToPlot
             }
             
