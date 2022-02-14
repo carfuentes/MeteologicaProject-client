@@ -13,6 +13,7 @@ export class TemperatureChartService extends ChartService {
     return value['min'] - 0.5;
   };
   lineColor = 'orange';
+  changeDataUnit = {"ºC":"ºC","dK":"dK"}
 
   constructor() { 
     super()

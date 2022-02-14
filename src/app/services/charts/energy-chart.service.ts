@@ -12,6 +12,8 @@ export class EnergyChartService extends ChartService {
   minyAxis = 0;
   lineColor = '#59ba52';
   
+  changeDataUnit = {"MW":"MWh","kW":"kWh"}
+  
 
   constructor() {
     super()

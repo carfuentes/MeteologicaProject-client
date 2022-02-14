@@ -25,7 +25,9 @@ export abstract class ProcessDataService {
   dataPointConverted: DataPoint | null = null;
   
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   /** Function to convert a data point from a specific unit to the selected unit, if necessary 
    * @param dataPoint: Object representing a data point with value and unit fields

@@ -12,6 +12,8 @@ export abstract class ChartService {
   abstract minyAxis: number | ((value: {[key: string]: number}) => number);
   /** Color for the line in the Y axis */
   abstract lineColor: string;
+  /** */
+  abstract changeDataUnit : {[key: string]: string};
 
   constructor() { }
 
@@ -70,7 +72,7 @@ export abstract class ChartService {
         boundaryGap: [0, '100%'],
         scale: true,
         axisLabel: {
-          formatter: '{value} '+ unit,
+          formatter: '{value} '+ this.changeDataUnit[unit],
           fontFamily: "Montserrat"
         }
       },
@@ -104,7 +106,7 @@ export abstract class ChartService {
             return value.max + 0.5;
         },
         axisLabel: {
-          formatter: '{value} '+ unit
+          formatter: '{value} '+ this.changeDataUnit[unit]
         }
       },
       series: [
