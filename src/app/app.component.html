@@ -1,16 +1,13 @@
 <mat-toolbar>
-  <span>Meteologica project</span>
+  <span id="title">{{title}}</span>
 </mat-toolbar>
 
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
 
-  <div fxFlex="95%" >
+  <div fxFlex="85%" >
     <mat-tab-group> 
-
-      <mat-tab *ngFor="let tab of tabs | keyvalue" label="{{tab.key | titlecase}}"> 
-        <app-data-chart [eventName]="tab.key" [processDataService]="tab.value"></app-data-chart> 
-      </mat-tab>
-     
+      <mat-tab class="energy" label= "Energy" ><app-energy-data-chart></app-energy-data-chart></mat-tab>
+      <mat-tab class="temperature" label= "Temperature" ><app-temperature-data-chart></app-temperature-data-chart></mat-tab>
     </mat-tab-group>
     
   

@@ -18,10 +18,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 
-
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataChartComponent } from './data-chart/data-chart.component';
+
+
+import { EnergyDataComponent } from './components/energy-data/energy-data.component';
+import { TemperatureDataComponent } from './components/temperature-data/temperature-data.component';
 
 const config: SocketIoConfig = {
 	url: environment.socketUrl, // socket server url;
@@ -33,7 +35,8 @@ const config: SocketIoConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    DataChartComponent
+    EnergyDataComponent,
+    TemperatureDataComponent
   ],
   imports: [
     FormsModule,
@@ -53,7 +56,8 @@ const config: SocketIoConfig = {
     }),
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

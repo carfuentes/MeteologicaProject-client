@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ChartService } from './chart.service';
+import { EnergyChartService } from './energy-chart.service';
 
-describe('ChartService', () => {
-  let service: ChartService;
+describe('EnergyChartService', () => {
+  let service: EnergyChartService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ChartService);
+    service = TestBed.inject(EnergyChartService);
   });
 
   it('should be created', () => {

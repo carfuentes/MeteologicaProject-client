@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ProcessEnergyDataService } from './services/process-data/process-energy-data.service';
-import { ProcessTemperatureDataService } from './services/process-data/process-temperature-data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +7,15 @@ import { ProcessTemperatureDataService } from './services/process-data/process-t
   
 })
 export class AppComponent {
-  title = 'MeteologicaProject-client';
+  title = 'Meteologica project';
   
-  tabs : {[key: string]: ProcessEnergyDataService | ProcessTemperatureDataService};
+  tabs : {[key: string]: string};
 
-  constructor( public processTemperatureService: ProcessTemperatureDataService, 
-              public processEnergyService: ProcessEnergyDataService) {
+  constructor() {
       
       this.tabs = {
-        temperature: this.processTemperatureService,
-        power: this.processEnergyService
+        temperature: "Temperature",
+        power: "Energy"
       }
 
   }

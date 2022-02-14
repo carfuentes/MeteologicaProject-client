@@ -1,3 +1,7 @@
 .data-chart > div {
   height: 40em !important;
 }
+
+mat-grid-list {
+  margin: 1em;
+}
