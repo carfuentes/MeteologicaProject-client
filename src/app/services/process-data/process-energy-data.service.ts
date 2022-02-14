@@ -6,7 +6,7 @@ import { ProcessDataService } from './process-data.service'
 
 
 /** Service that inherits from an abstract class the basic methods to process power data records 
- *  received in an time interval and has the specifcs to transform it to an energy value.
+ *  received in a time interval and that has the specifcs to transform it into an energy value.
  *  It has also the the power and energy different units and their conversions.
  * 
  */

@@ -1,8 +1,8 @@
 import { EChartsOption } from 'echarts';
 import * as moment from 'moment';
 
-/** Abstract class to implement the basic methods that creates a ECharts Temperature or Energy chart
- * and has also the methods needed to update it with new information
+/** Abstract class that implements the basic methods that create a ECharts Temperature or Energy chart
+ * and that has also the methods needed to update it with new information
  */
 export abstract class ChartService {
 
@@ -87,7 +87,7 @@ export abstract class ChartService {
   }
 
   /** Function to update the ECharts charts options when receiving new data
-   * @param endDate: New end date with the new time point that need to be inserted in the chart
+   * @param endDate: New end date with the new time point that needs to be inserted in the chart
    * @param unit: Unit of the data that is being plotted, to add it to the chart label
    * @param listDataValues: List with the data to be plotted, the time points and the data values
    * 

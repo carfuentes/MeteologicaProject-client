@@ -2,12 +2,12 @@ import { DataPoint } from 'src/app/interfaces/data-point'
 import { DataPointToPlot } from 'src/app/interfaces/data-point-to-plot'
 import { BasicDataPoint } from "src/app/interfaces/basic-data-point";
 
-/** Abstarct class to define the basic operations needed to process a data point with temperature or power information
+/** Abstract class to define the basic operations needed to process a data point with temperature or power information
  * and get the transformed value that will be displayed in the component chart
   */
 export abstract class ProcessDataService {
 
-  /** Object with the keys the units of the data displayed in the chart and the values the 
+  /** Object where the keys are the units of the data displayed in the chart and the values the 
    * units from the raw data */
   abstract listUnits: {[key: string]:string};
   /** Object with the functions to convert the data from a unit to another */
@@ -46,7 +46,7 @@ export abstract class ProcessDataService {
    * @param timeString: String with format HH:mm:ss
    * @param startDate: Date to which the string time wants to be added (when the connection/streaming started) 
    * 
-   * @returns A Date corresponding to the date when the data is being received (taking into account the streaming user date)
+   * @returns The date when the data is being received (taking into account the streaming user date)
   */
   getCurrentDate(timeString: string, startDate: Date): Date {
     // Split it at the colons and save into array

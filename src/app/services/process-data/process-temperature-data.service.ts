@@ -5,7 +5,7 @@ import { BasicDataPoint } from 'src/app/interfaces/basic-data-point';
 import { ProcessDataService } from './process-data.service'
 
 /** Service that inherits from an abstract class the basic methods to process temperature data records 
- *  received in an time interval and has the specifcs to transform it to an temperature average value.
+ *  received in an time interval and that has the specifcs to transform it to a temperature average value.
  *  It has also the the temperature different units and their conversions.
  * 
  */
